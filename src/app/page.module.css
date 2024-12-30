@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 377px;
-  height: 290px;
+  height: 378.5px;
   border-radius: 20px;
   /* border: solid black 1px; */
   margin: auto;
@@ -14,7 +14,7 @@
 .active {
   /* background-color: black; */
   color: white;
-  background-color: blue;
+  background-color: #3c82f6;
 }
 .footer {
   display: flex;
@@ -27,18 +27,47 @@
 .box button {
   color: red;
 }
-.inputd {
-  /* background-color: blue; */
-  width: 50%;
-  /* height: 100px; */
+.todo-container h2 {
+  margin-bottom: 20px;
+}
+.addTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
 }
 .addTask input {
-  width: 248px;
-  height: 34px;
+  width: 280px;
+  height: 40px;
   padding: 8px 16px;
   margin-right: 6px;
+  border-radius: 5px;
+  /* margin-top: 20px; */
+
+  /* background-color: black; */
 }
 .addTask button {
+  height: 40px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px 16px;
   background-color: #3c82f6;
+  border-radius: 5px;
+  color: white;
+}
+.activeThree {
+  /* background-color: blue; */
+  width: 345px;
+  /* width: 90%; */
+  height: 32px;
+  display: flex;
+  margin: 20px 0px;
+  gap: 5px;
+}
+.activeThree button {
+  width: 82px;
+  height: 32px;
+  border-radius: 5px;
 }

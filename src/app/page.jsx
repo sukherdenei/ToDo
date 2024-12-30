@@ -30,6 +30,7 @@
 //   );
 // }
 "use client";
+
 import { useState } from "react";
 import styles from "./page.module.css";
 
@@ -37,60 +38,62 @@ export default function Home() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
-  // const [del, setDel] = useState("");
-
   const [all, setAll] = useState("active");
   const [active, setActive] = useState("offline");
   const [completed, setCompleted] = useState("offline");
 
-  const handleactive = () => {
+  const alll = () => {
     setAll(styles.active);
     setActive(styles.offline);
     setCompleted(styles.offline);
   };
-  const handleon = () => {
+  const activity = () => {
     setAll(styles.offline);
     setActive(styles.active);
     setCompleted(styles.offline);
   };
-  const handleonline = () => {
+  const completedd = () => {
     setAll(styles.offline);
     setActive(styles.offline);
     setCompleted(styles.active);
   };
-
   const addTodoHandler = () => {
     setTodos([...todos, newTodo]);
   };
-  const deleteHandler = () => {
-    alert("are you sure to delete ?");
+  // const deleteHandler = () => {
+  //   alert("are you sure to delte!");
+  // };
+  const deleteTask = (d) => {
+    const deleter = todos.filter((todo, idx) => idx != d);
+    setTodos(deleter);
+    alert("are you sure to delete!");
   };
-
-  const deleteX = () => {
-    todos.splice(() => {});
-  };
-
   return (
     <div>
       <div className={styles[`todo-container`]}>
-        <h2>To-Do list</h2>
+        <h2>To do list</h2>
         <div className={`${styles.flex} ${styles["addTask"]}`}>
-          <input
-            type="text"
-            placeholder="Add a new task"
-            onChange={(e) => setNewTodo(e.target.value)}
-          />
-          <button onClick={addTodoHandler}>Add</button>
+          <div>
+            <input
+              type="text"
+              placeholder="Add A New Task"
+              onChange={(e) => setNewTodo(e.target.value)}
+            />
+          </div>
+          <div>
+            <button onClick={addTodoHandler}>Add</button>
+          </div>
         </div>
-        <div className="activeThree">
+
+        <div className={styles["activeThree"]}>
           <div className={styles.flex}>
-            <button onClick={handleactive} className={all}>
+            <button onClick={alll} className={all}>
               All
             </button>
-            <button onClick={handleon} className={active}>
+            <button onClick={activity} className={active}>
               Active
             </button>
-            <button onClick={handleonline} className={completed}>
+            <button onClick={completedd} className={completed}>
               Completed
             </button>
           </div>
@@ -100,18 +103,17 @@ export default function Home() {
             return (
               <div className={styles.box}>
                 <input type="checkbox" name="" id="" />
-                <p>{todo}</p>
-                <button onClick={deleteX}>Delete</button>
+                <p key={index}>{todo}</p>
+                <button
+                  onClick={() => {
+                    deleteTask(index);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
-        </div>
-        {/* <div className="no-task">
-          <p>No task yet. Add one above!</p>
-        </div> */}
-        <div className="footer">
-          <p>Powered by </p>
-          <h5>Pinecone academy</h5>
         </div>
       </div>
     </div>
