@@ -31,7 +31,7 @@
 // }
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -64,8 +64,8 @@ export default function Home() {
   //   alert("are you sure to delte!");
   // };
   const deleteTask = (d) => {
-    const deleter = todos.filter((todo, idx) => idx != d);
-    setTodos(deleter);
+    const deleted = todos.filter((first, last) => last != d);
+    setTodos(deleted);
     alert("are you sure to delete!");
   };
   return (
@@ -99,14 +99,14 @@ export default function Home() {
           </div>
         </div>
         <div>
-          {todos.map((todo, index) => {
+          {todos.map((first, last) => {
             return (
               <div className={styles.box}>
                 <input type="checkbox" name="" id="" />
-                <p key={index}>{todo}</p>
+                <p key={last}>{first}</p>
                 <button
                   onClick={() => {
-                    deleteTask(index);
+                    deleteTask(last);
                   }}
                 >
                   Delete
