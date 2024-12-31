@@ -4,17 +4,25 @@
   align-items: center;
   justify-content: center;
   width: 377px;
-  height: 378.5px;
+  /* height: 378.5px; */
   border-radius: 20px;
   /* border: solid black 1px; */
   margin: auto;
   margin-top: 20px;
   box-shadow: -3px 8px 31px 36px rgba(0, 0, 0, 0.1);
 }
+.activeThree button {
+  width: 82px;
+  height: 32px;
+  border-radius: 5px;
+  background-color: rgb(232, 232, 232);
+  border: none;
+}
 .active {
   /* background-color: black; */
   color: white;
-  background-color: #3c82f6;
+  background-color: #3c82f6 !important;
+  /* border: none; */
 }
 .footer {
   display: flex;
@@ -23,9 +31,22 @@
 }
 .box {
   display: flex;
+  background-color: rgb(249, 249, 249);
+  width: 345px;
+  height: 62px;
+  gap: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .box button {
   color: red;
+  border: none;
+  font-size: 14px;
+}
+.taskB {
+  display: flex;
+  justify-content: center;
 }
 .todo-container h2 {
   margin-bottom: 20px;
@@ -34,7 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  /* background-color: black; */
 }
 .addTask input {
   width: 280px;
@@ -59,6 +80,7 @@
 }
 .activeThree {
   /* background-color: blue; */
+
   width: 345px;
   /* width: 90%; */
   height: 32px;
@@ -66,8 +88,8 @@
   margin: 20px 0px;
   gap: 5px;
 }
-.activeThree button {
-  width: 82px;
-  height: 32px;
-  border-radius: 5px;
+
+.flex {
+  display: flex;
+  gap: 5px;
 }

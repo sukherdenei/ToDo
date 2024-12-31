@@ -58,15 +58,20 @@ export default function Home() {
     setCompleted(styles.active);
   };
   const addTodoHandler = () => {
+    if (setTodos("")) {
+      alert("enter a task!");
+    }
     setTodos([...todos, newTodo]);
   };
   // const deleteHandler = () => {
   //   alert("are you sure to delte!");
   // };
+  //[www, wwww ,ddasd ,wewesd]
   const deleteTask = (d) => {
     const deleted = todos.filter((first, last) => last != d);
     setTodos(deleted);
     alert("are you sure to delete!");
+    alert("yes or no?");
   };
   return (
     <div>
@@ -101,16 +106,21 @@ export default function Home() {
         <div>
           {todos.map((first, last) => {
             return (
-              <div className={styles.box}>
-                <input type="checkbox" name="" id="" />
-                <p key={last}>{first}</p>
-                <button
-                  onClick={() => {
-                    deleteTask(last);
-                  }}
-                >
-                  Delete
-                </button>
+              <div className="taskB">
+                <div key={last} className={styles.box}>
+                  <div className={styles.flex}>
+                    <input type="checkbox" name="" id="" />
+                    <p key={last}>{first}</p>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      deleteTask(last);
+                    }}
+                  >
+                    Delete!
+                  </button>
+                </div>
               </div>
             );
           })}
