@@ -45,6 +45,7 @@ export default function Home() {
     newTodo.length == 0
       ? alert("enter a new task")
       : setTodos([...todos, newTodo]);
+    // setNewTodo("");
     // if (newTodo.length == [0]) {
     //   alert("enter a new task");
     // } else {
@@ -61,6 +62,7 @@ export default function Home() {
     } else {
     }
   };
+
   return (
     <div>
       <div className={styles[`todo-container`]}>
@@ -106,8 +108,8 @@ export default function Home() {
               <div className="taskB">
                 <div key={last} className={styles.box}>
                   <div className={styles.flex}>
-                    {/* <input type="checkbox" name="" id="" />
-                    <p key={last}>{first}</p> */}
+                    <input type="checkbox" name="" id="" />
+                    <p key={last}>{first}</p>
                   </div>
 
                   <button
@@ -126,9 +128,7 @@ export default function Home() {
           {todos.length
             ? "0 of 1 tasks completed"
             : "No task yet. Add one above"}
-          {/* <h5>clear completed</h5> */}
         </div>
-
         <div className={styles.phfive}>
           <p>Powered by</p>
           <h5>Pinecone academy</h5>
