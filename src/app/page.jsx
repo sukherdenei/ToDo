@@ -29,6 +29,7 @@
 //     </div>
 //   );
 // }
+
 "use client";
 
 import { use, useState } from "react";
@@ -38,40 +39,27 @@ export default function Home() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
-  const [all, setAll] = useState("active");
-  const [active, setActive] = useState("offline");
-  const [completed, setCompleted] = useState("offline");
+  const [activeFilter, setActiveFilter] = useState("all");
 
-  const alll = () => {
-    setAll(styles.active);
-    setActive(styles.offline);
-    setCompleted(styles.offline);
-  };
-  const activity = () => {
-    setAll(styles.offline);
-    setActive(styles.active);
-    setCompleted(styles.offline);
-  };
-  const completedd = () => {
-    setAll(styles.offline);
-    setActive(styles.offline);
-    setCompleted(styles.active);
-  };
   const addTodoHandler = () => {
-    if (setTodos("")) {
-      alert("enter a task!");
-    }
-    setTodos([...todos, newTodo]);
+    newTodo.length == 0
+      ? alert("enter a new task")
+      : setTodos([...todos, newTodo]);
+    // if (newTodo.length == [0]) {
+    //   alert("enter a new task");
+    // } else {
+    //   setTodos([...todos, newTodo]);
+    // }
   };
-  // const deleteHandler = () => {
-  //   alert("are you sure to delte!");
-  // };
-  //[www, wwww ,ddasd ,wewesd]
+
   const deleteTask = (d) => {
     const deleted = todos.filter((first, last) => last != d);
-    setTodos(deleted);
-    alert("are you sure to delete!");
-    alert("yes or no?");
+
+    const isconfirmed = confirm("are you sure to delete!");
+    if (isconfirmed == true) {
+      setTodos(deleted);
+    } else {
+    }
   };
   return (
     <div>
@@ -92,13 +80,22 @@ export default function Home() {
 
         <div className={styles["activeThree"]}>
           <div className={styles.flex}>
-            <button onClick={alll} className={all}>
+            <button
+              className={activeFilter == "all" && styles.activeStyle}
+              onClick={() => setActiveFilter("all")}
+            >
               All
             </button>
-            <button onClick={activity} className={active}>
+            <button
+              className={activeFilter == "active" && styles.activeStyle}
+              onClick={() => setActiveFilter("active")}
+            >
               Active
             </button>
-            <button onClick={completedd} className={completed}>
+            <button
+              className={activeFilter == "completed" && styles.activeStyle}
+              onClick={() => setActiveFilter("completed")}
+            >
               Completed
             </button>
           </div>
@@ -109,8 +106,8 @@ export default function Home() {
               <div className="taskB">
                 <div key={last} className={styles.box}>
                   <div className={styles.flex}>
-                    <input type="checkbox" name="" id="" />
-                    <p key={last}>{first}</p>
+                    {/* <input type="checkbox" name="" id="" />
+                    <p key={last}>{first}</p> */}
                   </div>
 
                   <button
@@ -124,6 +121,17 @@ export default function Home() {
               </div>
             );
           })}
+        </div>
+        <div>
+          {todos.length
+            ? "0 of 1 tasks completed"
+            : "No task yet. Add one above"}
+          {/* <h5>clear completed</h5> */}
+        </div>
+
+        <div className={styles.phfive}>
+          <p>Powered by</p>
+          <h5>Pinecone academy</h5>
         </div>
       </div>
     </div>
