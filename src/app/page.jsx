@@ -37,15 +37,28 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState("");
+  const [newTodo, setNewTodo] = useState([]);
 
   const [activeFilter, setActiveFilter] = useState("all");
+
+  // const newTask = {
+  //   id: Date.now(),
+  //   text: inputValue,
+  //   isCompleted: false,
+  // };
+  // updateTaskList([newTodo, ...setNewTodo]);
+  // setTodos("");
 
   const addTodoHandler = () => {
     newTodo.length == 0
       ? alert("enter a new task")
       : setTodos([...todos, newTodo]);
-    // setNewTodo("");
+    setNewTodo("");
+    // {
+    //   title:"xa",
+    //   isCompleted:false
+    // }
+
     // if (newTodo.length == [0]) {
     //   alert("enter a new task");
     // } else {
@@ -62,6 +75,23 @@ export default function Home() {
     } else {
     }
   };
+  const clearCompletedTask = () => {
+    const confirmClear = window.confirm(
+      "Are you sure you want to clear all tasks?"
+    );
+    if (confirmClear == true) {
+      setTodos([]);
+    }
+  };
+  const toggleIsCompleted = (incomingTodo) => {
+    let changedTodos = todos.map((t) => {
+      if (t.todo === incomingTodo.todo) {
+        t.isCompleted = !t.isCompleted;
+      }
+      return t;
+    });
+    setTodos(changedTodos);
+  };
 
   return (
     <div>
@@ -70,6 +100,7 @@ export default function Home() {
         <div className={`${styles.flex} ${styles["addTask"]}`}>
           <div>
             <input
+              value={newTodo}
               type="text"
               placeholder="Add A New Task"
               onChange={(e) => setNewTodo(e.target.value)}
@@ -79,7 +110,6 @@ export default function Home() {
             <button onClick={addTodoHandler}>Add</button>
           </div>
         </div>
-
         <div className={styles["activeThree"]}>
           <div className={styles.flex}>
             <button
@@ -102,6 +132,7 @@ export default function Home() {
             </button>
           </div>
         </div>
+
         <div>
           {todos.map((first, last) => {
             return (
@@ -124,10 +155,15 @@ export default function Home() {
             );
           })}
         </div>
-        <div>
-          {todos.length
-            ? "0 of 1 tasks completed"
-            : "No task yet. Add one above"}
+        <div>{todos.length ? "" : "No task yet. Add one above"}</div>
+        <div className={styles.taskSummary}>
+          <p>
+            {todos.filter((todo) => todo.isCompleted).length} of {todos.length}{" "}
+            task completed
+          </p>
+          <p onClick={clearCompletedTask} className={styles.deleteTask}>
+            clear completed
+          </p>
         </div>
         <div className={styles.phfive}>
           <p>Powered by</p>
